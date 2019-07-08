@@ -1,5 +1,3 @@
-/* 2019. 07 . 06  Login linked start*/
-
 #include "main.h"
 
 enum main_select { ADMIN = '1', TEACHER, STUDENT, EXIT };

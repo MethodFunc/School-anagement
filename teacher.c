@@ -1,17 +1,15 @@
-/* 2019. 07 . 07 Teach linked start*/
-
 #include "teacher.h"
 
 Teach* NewTeach()
 {
-	Teach* New = malloc(sizeof(Teach));				//¸Þ¸ð¸® ÇÒ´ç.
+	Teach* New = malloc(sizeof(Teach));				//ë©”ëª¨ë¦¬ í• ë‹¹.
 
-	if (0 == New)									//ÇÒ´çµÈ ¸Þ¸ð¸®°¡ 0ÀÌ¸é Á¾·á
+	if (0 == New)									//í• ë‹¹ëœ ë©”ëª¨ë¦¬ê°€ 0ì´ë©´ ì¢…ë£Œ
 	{
 		return 0;
 	}
 
-	printf("»õ ±³¿ø ID : ");
+	printf("ìƒˆ êµì› ID : ");
 	fgets(New->data.id, ID_SIZE, stdin);
 	for (int i = 0; i < ID_SIZE; ++i)
 	{
@@ -20,13 +18,13 @@ Teach* NewTeach()
 			New->data.id[i] = 0;
 		}
 
-		if (-51 == New->data.id[i])			// '?'ÀÎ -51ÀÌ ³ª¿À¸é ¹Ýº¹¹®À» ºüÁ®³ª¿Â´Ù.
+		if (-51 == New->data.id[i])			// '?'ì¸ -51ì´ ë‚˜ì˜¤ë©´ ë°˜ë³µë¬¸ì„ ë¹ ì ¸ë‚˜ì˜¨ë‹¤.
 		{
 			break;
 		}
 	}
 
-	printf("ºñ¹Ð¹øÈ£ : ");
+	printf("ë¹„ë°€ë²ˆí˜¸ : ");
 	fgets(New->data.pass, PAWD_SIZE, stdin);
 	for (int i = 0; i < ID_SIZE; ++i)
 	{
@@ -42,7 +40,7 @@ Teach* NewTeach()
 
 	}
 
-	printf("»õ ±³¿ø ÀÌ¸§ : ");
+	printf("ìƒˆ êµì› ì´ë¦„ : ");
 	fgets(New->data.name, NAME_SIZE, stdin);
 	for (int i = 0; i < NAME_SIZE; ++i)
 	{
@@ -57,7 +55,7 @@ Teach* NewTeach()
 		}
 	}
 
-	New->next = 0;									//New -> next ¿¡ 0°ª ÇÒ´ç.
+	New->next = 0;									//New -> next ì— 0ê°’ í• ë‹¹.
 }
 
 Teach* InsTeach(Teach* Head, Teach* New)
@@ -95,11 +93,11 @@ void TeachPrint(Teach* Head)
 {
 	int i = 1;
 
-	printf("±³¿ø Á¤º¸\n");
+	printf("êµì› ì •ë³´\n");
 	while (0 != Head)
 	{
-		printf("¼ø¹ø : [%d] ", i);
-		printf("±³¿ø ÀÌ¸§ : %s ", Head->data.name);
+		printf("ìˆœë²ˆ : [%d] ", i);
+		printf("êµì› ì´ë¦„ : %s ", Head->data.name);
 		printf("ID : %s\n", Head->data.id);
 		++i;
 		Head = Head->next;
@@ -118,7 +116,7 @@ Teach* TeachDel(Teach* Head)
 	Teach* Prev = NULL;
 	TeachPrint(Head);
 
-	printf("»èÁ¦ÇÒ ±³¿ø ÀÌ¸§ : ");
+	printf("ì‚­ì œí•  êµì› ì´ë¦„ : ");
 	fgets(Del->data.name, NAME_SIZE, stdin);
 	for (int i = 0; i < NAME_SIZE; ++i)
 	{
@@ -183,7 +181,7 @@ void TeachSearch(Teach* Head)
 {
 	Teach* Ser = malloc(sizeof(Teach));
 
-	printf("Ã£À» ±³¿ø ÀÌ¸§ : ");
+	printf("ì°¾ì„ êµì› ì´ë¦„ : ");
 	fgets(Ser->data.name, NAME_SIZE, stdin);
 	for (int i = 0; i < NAME_SIZE; ++i)
 	{
@@ -202,8 +200,8 @@ void TeachSearch(Teach* Head)
 	{
 		if (0 == (strcmp(Ser->data.name, Head->data.name)))
 		{
-			printf("±³¿ø ¾ÆÀÌµð : %s ", Head->data.id);
-			printf("±³¿ø ÀÌ¸§ : %s\n", Head->data.name);
+			printf("êµì› ì•„ì´ë”” : %s ", Head->data.id);
+			printf("êµì› ì´ë¦„ : %s\n", Head->data.name);
 			Head = Head->next;
 		}
 		else
